@@ -7,13 +7,13 @@ function newPriorityQueue<T>(): T[] {
 }
 
 function min<T extends HasWeight>(pq: T[]): T {
-    const minPath = pq[0]
+    const minElement = pq[0]
     const last = pq.pop()
     if (pq.length > 0 && last != undefined) {
         pq[0] = last
         sink(pq, 0)
     }
-    return minPath
+    return minElement
 }
 
 function sink<T extends HasWeight>(pq: T[], i: number) {
@@ -38,8 +38,8 @@ function swap<T>(pq: T[], i: number, j: number) {
     pq[j] = tmp
 }
 
-function add<T extends HasWeight>(pq: T[], path: T) {
-    pq.push(path)
+function add<T extends HasWeight>(pq: T[], element: T) {
+    pq.push(element)
     swim(pq, pq.length - 1)
 }
 
